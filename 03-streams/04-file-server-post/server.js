@@ -29,8 +29,10 @@ server.on('request', (req, res) => {
 
   limitStream.on('error', (err) => {
     if (err.code === 'LIMIT_EXCEEDED') {
-      res.statusCode = 413
-      res.end()
+      fs.unlink(filepath, () => {
+        res.statusCode = 413
+        res.end()
+      })
     }
   })
 
