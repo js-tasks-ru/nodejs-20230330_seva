@@ -51,7 +51,7 @@ server.on('request', (req, res) => {
     }
   })
 
-  streamOut.on('close', () => {
+  streamOut.on('finish', () => {
     res.statusCode = 201
     res.end()
   })
