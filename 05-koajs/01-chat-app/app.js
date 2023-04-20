@@ -8,7 +8,7 @@ app.use(require('koa-bodyparser')());
 const Router = require('koa-router');
 const router = new Router();
 
-const arr = []
+let arr = []
 
 router.get('/subscribe', async (ctx, next) => {
     const res = await new Promise((res, rej) => {
@@ -30,7 +30,7 @@ router.post('/publish', async (ctx, next) => {
     })
     arr = []
 
-     ctx.res.statusCode = 201;
+    ctx.res.statusCode = 201;
 });
 
 app.use(router.routes());
