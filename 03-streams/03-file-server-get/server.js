@@ -10,12 +10,14 @@ server.on('request', (req, res) => {
   const pathname = url.pathname.slice(1);
 
   const filepath = path.join(__dirname, 'files', pathname);
-  const stream = fs.createReadStream(filepath)
 
   if (url.pathname.split('/').length > 2) {
     res.statusCode = 400
     res.end()
+    return
   }
+
+  const stream = fs.createReadStream(filepath)
 
   stream.pipe(res)
 
